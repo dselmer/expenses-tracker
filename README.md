@@ -68,3 +68,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+the objective:
+im trying to add a new object to the bills array of objects in expensesSlice.js file 
+im using redux toolkit and tryiing to update state as if immer library didnt exsit. so old fashion immutable updates copying the original
+bills array and added a nerw obj to it with a new name: 'some name and cost: "$$$" values 
+
+the problem 
+is i tryed to added a updated to my store within my AddItem.js compnent its giving me the error bills is not iterable which is not true 
+if i remove the AddItem.js component the eroor goes away and i can iterate over it and put it values back in ListExpenses.js without problem.
+
+my guess
+is somthing is wrong with the way im eihter dispatching or how im updateing the state in epensesSlice.js not sure why this isnt working prioperly # expenses-tracker
