@@ -90,3 +90,7 @@ height: 80px;
   border-radius:20%;
   width: 8%;
 }
+.addItem-container{
+  display: flex;
+  justify-content: space-evenly;
+}

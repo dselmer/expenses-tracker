@@ -24,7 +24,7 @@ const AddItem = () => {
     <div className="container">
       <div className="searchBarContainer">
         <div className="search "></div>
-        <div className="search ">
+        <div className="addItem-container ">
           <TextField
             id="standard-basic"
             label=" Add expenses"
@@ -35,9 +35,17 @@ const AddItem = () => {
               type: "text",
             }}
           />
-        </div>
-        
-        <Button
+           <TextField
+            id="standard-basic"
+            label=" Add cost"
+            variant="outlined"
+            onChange={(event) => handleChange(event)}
+            sx={{
+              width: 200,
+              type: "text",
+            }}
+          />
+            <Button
           variant="contained"
           color="primary"
           size="small"
@@ -45,13 +53,15 @@ const AddItem = () => {
           sx={{
             width: 50,
             height: 50,
-
-            marginTop: 5.5,
+            type:"number",
+            marginTop:.5,
           }}
         >
           Add
         </Button>
+        </div>
       </div>
+      
     </div>
   );
 };
