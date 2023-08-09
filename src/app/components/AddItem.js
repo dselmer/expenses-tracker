@@ -5,20 +5,25 @@ import { useState } from "react";
 
 import { add } from "../features/expenses/expensesSlice.js";
 
-
-
 const AddItem = () => {
-  const [isItem, setItem] = useState("");
+  const [itemName, setItemName] = useState("");
+  const [itemCost, setItemCost] = useState("");
 
-  const handleChange = (e) => {
-    setItem(e.target.value);
+  const handleChangeName = (e) => {
+    setItemName(e.target.value);
+  };
+
+  const handleChangeCost = (e) => {
+    setItemCost(e.target.value);
   };
 
   const onClikedHandler=()=>{
-    dispatchEvents(add(isItem))
+    if (itemName && itemCost) {
+      dispatchEvents(add({ name: itemName, cost: itemCost }))
+    }
   }
 
-  const dispatchEvents = useDispatch(); 
+  const dispatchEvents = useDispatch();
 
   return (
     <div className="container">
@@ -29,7 +34,7 @@ const AddItem = () => {
             id="standard-basic"
             label=" Add expenses"
             variant="outlined"
-            onChange={(event) => handleChange(event)}
+            onChange={handleChangeName}
             sx={{
               width: 500,
               type: "text",
@@ -39,7 +44,7 @@ const AddItem = () => {
             id="standard-basic"
             label=" Add cost"
             variant="outlined"
-            onChange={(event) => handleChange(event)}
+            onChange={handleChangeCost}
             sx={{
               width: 200,
               type: "text",
@@ -61,7 +66,7 @@ const AddItem = () => {
         </Button>
         </div>
       </div>
-      
+
     </div>
   );
 };
