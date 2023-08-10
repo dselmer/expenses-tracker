@@ -8,14 +8,20 @@ import { add } from "../features/expenses/expensesSlice.js";
 
 
 const AddItem = () => {
-  const [isItem, setItem] = useState("");
+  const [isItemName, setItemName] = useState("");
+  const [isItemCost, setItemCost] = useState("");
 
-  const handleChange = (e) => {
-    setItem(e.target.value);
+  const handleChangeName = (e) => {
+    setItemName(e.target.value);
   };
 
+  const handleChangeCost = (e) => {
+    setItemCost(e.target.value);
+  };
+
+
   const onClikedHandler=()=>{
-    dispatchEvents(add(isItem))
+    dispatchEvents(add(isItemName.name,isItemCost.cost))
   }
 
   const dispatchEvents = useDispatch(); 
@@ -29,7 +35,7 @@ const AddItem = () => {
             id="standard-basic"
             label=" Add expenses"
             variant="outlined"
-            onChange={(event) => handleChange(event)}
+            onChange={(event) => handleChangeName(event)}
             sx={{
               width: 500,
               type: "text",
@@ -39,7 +45,7 @@ const AddItem = () => {
             id="standard-basic"
             label=" Add cost"
             variant="outlined"
-            onChange={(event) => handleChange(event)}
+            onChange={(event) => handleChangeCost(event)}
             sx={{
               width: 200,
               type: "text",
