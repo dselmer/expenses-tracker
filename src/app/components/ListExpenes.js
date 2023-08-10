@@ -8,20 +8,22 @@ const ListExpenes = () => {
   const dispatchEvents = useDispatch();
 
   const bills = useSelector(selectBills);
+  console.log('BILLS: ', bills)
 
   const handleClick = () =>{
     setNewItem(true)
     dispatchEvents(deleteItem)
   }
 
+  // you wont see the bills displayed here because isNewItem is false.
   return (
-    <>{isNewItem? 
+    <>{isNewItem?
     <div className="list">
-      { bills.map((item) =>{ 
+      { bills.map((item) =>{
         return  [
         <h1 className="name-title">{item.name}</h1>,
         <h2 className="cost-title">${item.cost}</h2>,
-        <input value="x" type="button" onClick={handleClick} />] 
+        <input value="x" type="button" onClick={handleClick} />]
       }
       )}
     </div>
