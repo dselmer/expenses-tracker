@@ -6,8 +6,8 @@ import {
   editBudget,
   remaining,
   selectBudget,
-  selectRemaining ,
-  selectSpentSoFar
+  selectRemaining,
+  selectSpentSoFar,
 } from "../features/expenses/expensesSlice.js";
 import { useSelect } from "@mui/base";
 const ViewExpenses = () => {
@@ -58,8 +58,8 @@ const ViewExpenses = () => {
           sx={{
             width: 50,
             height: 50,
-            marginLeft:.5,
-         marginTop:5.5,
+            marginLeft: 0.5,
+            marginTop: 5.5,
           }}
         >
           {isEditing ? "Accept" : "Edit"}

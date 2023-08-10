@@ -67,9 +67,9 @@ height: 80px;
 
 }
 
-.list .item-text{
+.list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   border:2px solid gray;
   width: 1000px ;
   margin:0px auto;
@@ -93,4 +93,8 @@ height: 80px;
 .addItem-container{
   display: flex;
   justify-content: space-evenly;
+}
+
+.m-right{
+margin-right: 50px;
 }

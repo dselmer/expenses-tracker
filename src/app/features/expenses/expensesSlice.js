@@ -4,13 +4,14 @@ import { createSlice, current } from "@reduxjs/toolkit";
 export const expensesSlice = createSlice({
   name: "expenses",
   initialState: {
+    setNewItem: false,
     budget: '',
     remaining: '',
     spentSoFar: '',
     bills: [
       {
-        name: "",
-        cost: '',
+        name: null,
+        cost: null,
       }
     ]
   },
@@ -19,7 +20,8 @@ export const expensesSlice = createSlice({
       console.log('CURRENT STATE: ', current(state))
       console.log('PAYLOAD: ', action.payload)
       return {
-        ...state,
+        
+        ...state,setNewItem:true,
         bills: [ ...state.bills, action.payload]
       }
     },
@@ -40,6 +42,7 @@ export const selectBills = (state) => {
   console.log('SELECT BILLS STATE: ', state)
   return state.expenses.bills
 }
+export const selectSetItem = (state)=>state.expenses.setNewItem
 
 
 
