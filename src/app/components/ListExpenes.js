@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItem, selectBills,selectSetItem } from "../features/expenses/expensesSlice.js";
+import { deleteItem, selectBills,selectSetItem,selectRemaining} from "../features/expenses/expensesSlice.js";
 import {useState} from 'react';
 
 const ListExpenes = () => {
@@ -10,6 +10,7 @@ const ListExpenes = () => {
  const  isNewItem = useSelector(selectSetItem)
 
   const bills = useSelector(selectBills);
+
 
   console.log('BILLS: ', bills)
 
@@ -23,7 +24,7 @@ const ListExpenes = () => {
 <>
     { bills.map((item)=>{
       
-    return  isNewItem && item.name != null  ?  <div className="list">
+    return  isNewItem   ?  <div className="list">
       <h1 className="name-title  m-right">{item.name}</h1>
       <h2 className="cost-title m-right " >${item.cost}</h2>
       <input value="x" type="button" onClick={handleClick} />

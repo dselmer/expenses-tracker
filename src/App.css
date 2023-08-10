@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 .title {
   color: black;
 }
@@ -76,7 +78,11 @@ height: 80px;
   margin-top: 100px;
   text-align: center;
   padding: 20px;
+
   
+}
+.list-container {
+  overflow: scroll;
 }
 
 .name-title{

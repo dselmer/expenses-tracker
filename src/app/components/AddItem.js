@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
-import { add } from "../features/expenses/expensesSlice.js";
+import { add,spentSoFar,remaining } from "../features/expenses/expensesSlice.js";
 
 const AddItem = () => {
   const [itemName, setItemName] = useState("");
@@ -20,7 +20,10 @@ const AddItem = () => {
 
   const onClikedHandler=()=>{
     if (itemName && itemCost) {
+    
       dispatchEvents(add({ name: itemName, cost: itemCost }))
+      dispatchEvents(remaining)
+     
     }
   }
 

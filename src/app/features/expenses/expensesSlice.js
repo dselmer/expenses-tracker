@@ -8,12 +8,7 @@ export const expensesSlice = createSlice({
     budget: '',
     remaining: '',
     spentSoFar: '',
-    bills: [
-      {
-        name: null,
-        cost: null,
-      }
-    ]
+    bills: [ ]
   },
   reducers: {
     add: (state, action) =>  {
@@ -25,9 +20,11 @@ export const expensesSlice = createSlice({
         bills: [ ...state.bills, action.payload]
       }
     },
-    remaining: (state) => state.remaining = state.budget - state.spentSoFar,
+    remaining: (state) => state.remaining = state.budget -= state.spentSoFar,
     editBudget: (state,action) => void(state.budget = action.payload || state.budget )  ,
-    spentSoFar: (state,action) => state.spentSoFar = action.bills.cost || state.spentSoFar ,
+    spentSoFar: (state,action) =>{
+      console.log('this is spent so far,',state.spentSoFar) 
+      return state.spentSoFar += state.bills.cost} ,
     deleteItem: (state)=> [...state.bills,{name:state.name,cost:state.cost}]
 
   },

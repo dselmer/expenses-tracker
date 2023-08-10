@@ -15,6 +15,8 @@ const ViewExpenses = () => {
 
   const dispatchEvent = useDispatch();
   const netPay = useSelector(selectBudget);
+  const remaining = useSelector(selectRemaining);
+  const spentSoFar = useSelector(selectSpentSoFar);
   // const netRemaining = useSelect( selectRemaining );
   // const netSpent = useSelect( selectSpentSoFar );
 
@@ -66,10 +68,11 @@ const ViewExpenses = () => {
         </Button>
 
         <div className="box box-2">
-          <h2>Remaining:${}</h2>
+ 
+          <h2>Remaining:${remaining}</h2>
         </div>
         <div className="box box-3">
-          <h2>Spent:${}</h2>
+          <h2>Spent:${spentSoFar} </h2>
         </div>
       </div>
     </div>
