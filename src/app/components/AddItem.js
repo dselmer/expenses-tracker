@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
-import { add,spentSoFar,remaining } from "../features/expenses/expensesSlice.js";
+import { add,spentSoFar,remaining,selectBudget ,selectRemaining, editBudget} from "../features/expenses/expensesSlice.js";
 
 const AddItem = () => {
   const [itemName, setItemName] = useState("");
@@ -17,13 +17,16 @@ const AddItem = () => {
     setItemCost(e.target.value);
   };
 
+  const netPay = useSelector(selectBudget);
+  const netRemaining = useSelector(selectRemaining);
+
 
   const onClikedHandler=()=>{
     if (itemName && itemCost) {
     
       dispatchEvents(add({ name: itemName, cost: itemCost }))
-      dispatchEvents(remaining)
-     
+   
+     dispatchEvents(editBudget(netPay -  itemCost));
     }
   }
 

@@ -20,8 +20,8 @@ export const expensesSlice = createSlice({
         bills: [ ...state.bills, action.payload]
       }
     },
-    remaining: (state) => state.remaining = state.budget -= state.spentSoFar,
-    editBudget: (state,action) => void(state.budget = action.payload || state.budget )  ,
+    remaining: (state,action) => {return{...state, remaining: action.payload}},
+    editBudget: (state,action) =>{ return {...state,budget : action.payload }}  ,
     spentSoFar: (state,action) =>{
       console.log('this is spent so far,',state.spentSoFar) 
       return state.spentSoFar += state.bills.cost} ,

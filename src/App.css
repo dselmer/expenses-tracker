@@ -104,3 +104,8 @@ height: 80px;
 .m-right{
 margin-right: 50px;
 }
+
+.negative{
+  color: #C41E3A;
+  background-color: #90ee90;
+}

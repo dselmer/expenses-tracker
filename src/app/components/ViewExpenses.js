@@ -12,17 +12,25 @@ import {
 import { useSelect } from "@mui/base";
 const ViewExpenses = () => {
   const [isEditing, setEditing] = useState(false);
+  const [isNewBudget,setNewBudget]=useState(null)
 
   const dispatchEvent = useDispatch();
   const netPay = useSelector(selectBudget);
-  const remaining = useSelector(selectRemaining);
-  const spentSoFar = useSelector(selectSpentSoFar);
+  const netRemaining = useSelector(selectRemaining);
+  const netSpentSoFar = useSelector(selectSpentSoFar);
   // const netRemaining = useSelect( selectRemaining );
   // const netSpent = useSelect( selectSpentSoFar );
 
   const onClickHandler = () => {
     setEditing(!isEditing);
   };
+
+  const onChangeHandler=(event)=>{
+    dispatchEvent(editBudget(Number(event.target.value)))
+    setNewBudget(event.target.value)
+  
+    
+  }
 
   return (
     <div className="container">
@@ -35,7 +43,7 @@ const ViewExpenses = () => {
             <TextField
               id="standard-basic"
               onChange={(event) =>
-                dispatchEvent(editBudget(Number(event.target.value)))
+                onChangeHandler(event)
               }
               label=" Budget:"
               variant="filled"
@@ -49,7 +57,7 @@ const ViewExpenses = () => {
           </div>
         ) : (
           <div className="box box-1">
-            <h2 className="title-budget">Budget:${netPay}</h2>
+            <h2 className="title-budget">Budget:${isNewBudget}</h2>
           </div>
         )}
         <Button
@@ -69,10 +77,10 @@ const ViewExpenses = () => {
 
         <div className="box box-2">
  
-          <h2>Remaining:${remaining}</h2>
+          <h2 className={netPay < 0 ? 'negative': null}>Remaining:${netPay}</h2>
         </div>
         <div className="box box-3">
-          <h2>Spent:${spentSoFar} </h2>
+          <h2>Spent:${netSpentSoFar} </h2>
         </div>
       </div>
     </div>
