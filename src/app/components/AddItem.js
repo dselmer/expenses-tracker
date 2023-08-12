@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
 import { add,spentSoFar,remaining,selectBudget ,selectRemaining, editBudget} from "../features/expenses/expensesSlice.js";
+import { setRef } from "@mui/material";
 
 const AddItem = () => {
   const [itemName, setItemName] = useState("");
@@ -11,10 +12,14 @@ const AddItem = () => {
 
   const handleChangeName = (e) => {
     setItemName(e.target.value);
+    
+    
+    
   };
 
   const handleChangeCost = (e) => {
     setItemCost(e.target.value);
+
   };
 
   const netPay = useSelector(selectBudget);
@@ -26,7 +31,9 @@ const AddItem = () => {
     
       dispatchEvents(add({ name: itemName, cost: itemCost }))
    
-     dispatchEvents(editBudget(netPay -  itemCost));
+     dispatchEvents(remaining(netRemaining -  itemCost));
+  
+    
     }
   }
 

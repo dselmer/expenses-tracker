@@ -27,7 +27,7 @@ const ViewExpenses = () => {
 
   const onChangeHandler=(event)=>{
     dispatchEvent(editBudget(Number(event.target.value)))
-    setNewBudget(event.target.value)
+   dispatchEvent(remaining(event.target.value))
   
     
   }
@@ -57,7 +57,7 @@ const ViewExpenses = () => {
           </div>
         ) : (
           <div className="box box-1">
-            <h2 className="title-budget">Budget:${isNewBudget}</h2>
+            <h2 className="title-budget">Budget:${netPay}</h2>
           </div>
         )}
         <Button
@@ -77,7 +77,7 @@ const ViewExpenses = () => {
 
         <div className="box box-2">
  
-          <h2 className={netPay < 0 ? 'negative': null}>Remaining:${netPay}</h2>
+          <h2 className={netRemaining < 0 ? 'negative': null}>Remaining:${netRemaining}</h2>
         </div>
         <div className="box box-3">
           <h2>Spent:${netSpentSoFar} </h2>
